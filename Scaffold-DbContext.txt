@@ -1,0 +1,31 @@
+
+
+CREATE TABLE CATEGORIA (
+IdCategoria int primary  key identity(1,1)
+Descripcion varchar(50)
+)
+
+CREATE TABLE PRODUCTO(
+IdProducto int primary  key identity(1,1)
+CodigoBarra varchar(50),
+Descripcion varchar(50),
+Marca varchar(50),
+IdCategoria int ,
+Precio decimal(10,2)
+CONSTRAINT FK_IDCATEGORIA FOREIGN KEY (IdCategoria) REFERENCES CATEGORIA(IdCategoria)
+)
+
+INSERT INTO CATEGORIA(Descripcion ) values
+('Tecnologia'),
+('Accesorios'),
+('Hogar')
+
+
+
+INSERT INTO PRODUCTO  (CodigoBarra ,Descripcion   ,Marca  ,IdCategoria   ,Precio)
+     VALUES
+           ('286328634', 'Nuevo producto', 'Nike',  1,   102)
+
+
+
+Scaffold-DbContext "Server=(local); DataBase=practicas_safs; Integrated Security=true; TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer -OutPutDir Models
